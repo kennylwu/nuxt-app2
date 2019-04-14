@@ -1,5 +1,6 @@
 <template>
   <section class="container">
+    <h1>Contact</h1>
     <div>
       <b-form @submit="onSubmit" @reset="onReset" v-if="show">
         <b-form-group
