@@ -1,99 +1,60 @@
 <template>
   <section class="container">
-    <h1>Contact</h1>
-    <div class="card">
-      <div class="header">
-        <h4 class="title">Edit Profile</h4>
-      </div>
-      <div class="content">
-        <form>
-          <div class="row">
-            <div class="col-md-5">
-              <fg-input
-                type="text"
-                label="Company"
-                :disabled="true"
-                placeholder="Paper dashboard"
-                v-model="user.company"
-              ></fg-input>
-            </div>
-            <div class="col-md-3">
-              <fg-input type="text" label="Username" placeholder="Username" v-model="user.username"></fg-input>
-            </div>
-            <div class="col-md-4">
-              <fg-input type="email" label="Username" placeholder="Email" v-model="user.email"></fg-input>
-            </div>
-          </div>
+    <div>
+      <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+        <b-form-group
+          id="input-group-1"
+          label="Email address:"
+          label-for="input-1"
+          description="We'll never share your email with anyone else."
+        >
+          <b-form-input
+            id="input-1"
+            v-model="form.email"
+            type="email"
+            required
+            placeholder="Enter email"
+          ></b-form-input>
+        </b-form-group>
 
-          <div class="row">
-            <div class="col-md-6">
-              <fg-input
-                type="text"
-                label="First Name"
-                placeholder="First Name"
-                v-model="user.firstName"
-              ></fg-input>
-            </div>
-            <div class="col-md-6">
-              <fg-input
-                type="text"
-                label="Last Name"
-                placeholder="Last Name"
-                v-model="user.lastName"
-              ></fg-input>
-            </div>
-          </div>
+        <b-form-group id="input-group-2" label="Your Name:" label-for="input-2">
+          <b-form-input id="input-2" v-model="form.name" required placeholder="Enter name"></b-form-input>
+        </b-form-group>
 
-          <div class="row">
-            <div class="col-md-12">
-              <fg-input
-                type="text"
-                label="Address"
-                placeholder="Home Address"
-                v-model="user.address"
-              ></fg-input>
-            </div>
-          </div>
+        <b-form-group id="input-group-3" label="Favorite planet:" label-for="input-3">
+          <b-form-select id="input-3" v-model="form.planet" :options="planet" required></b-form-select>
+        </b-form-group>
 
-          <div class="row">
-            <div class="col-md-4">
-              <fg-input type="text" label="City" placeholder="City" v-model="user.city"></fg-input>
-            </div>
-            <div class="col-md-4">
-              <fg-input type="text" label="Country" placeholder="Country" v-model="user.country"></fg-input>
-            </div>
-            <div class="col-md-4">
-              <fg-input
-                type="number"
-                label="Postal Code"
-                placeholder="ZIP Code"
-                v-model="user.postalCode"
-              ></fg-input>
-            </div>
-          </div>
+        <b-form-group id="input-group-4">
+          <b-form-checkbox-group v-model="form.checked" id="checkboxes-4">
+            <b-form-checkbox value="Meow">Cat person</b-form-checkbox>
+            <b-form-checkbox value="Woof">Dog person</b-form-checkbox>
+          </b-form-checkbox-group>
+        </b-form-group>
 
-          <div class="row">
-            <div class="col-md-12">
-              <div class="form-group">
-                <label>About Me</label>
-                <textarea
-                  rows="5"
-                  class="form-control border-input"
-                  placeholder="Here can be your description"
-                  v-model="user.aboutMe"
-                ></textarea>
-              </div>
-            </div>
+        <b-button type="submit" variant="primary">Submit</b-button>
+        <b-button type="reset" variant="danger">Reset</b-button>
+      </b-form>
+      <div class="container">
+        <b-card class="mt-3" header="Form Data Result">
+          <h3>Input</h3>
+          <div class="container row">
+            <label for="email">Email:</label>
+            <pre class="m-0">{{ form.email }}</pre>
           </div>
-          <div class="text-center">
-            <button
-              type="submit"
-              class="btn btn-info btn-fill btn-wd"
-              @click.prevent="updateProfile"
-            >Update Profile</button>
+          <div class="container row">
+            <label for="email">Name:</label>
+            <pre class="m-0">{{ form.name }}</pre>
           </div>
-          <div class="clearfix"></div>
-        </form>
+          <div class="container row">
+            <label for="email">Planet:</label>
+            <pre class="m-0">{{ form.planet }}</pre>
+          </div>
+          <div class="container row">
+            <label for="email">Checkbox:</label>
+            <pre class="m-0">{{ form.checked[0]  }} {{ form.checked[1] }}</pre>
+          </div>
+        </b-card>
       </div>
     </div>
   </section>
@@ -101,23 +62,46 @@
 
 <script>
 export default {
+  name: "service",
   data() {
     return {
-      user: {
-        company: "Paper Dashboard",
-        username: "michael23",
+      form: {
         email: "",
-        lastName: "Faker",
-        address: "Melbourne, Australia",
-        city: "melbourne",
-        postalCode: "",
-        aboutMe: `Oh so, your weak rhyme. You doubt I'll bother, reading into it.I'll probably won't, left to my own devicesBut that's the difference in our opinions.`
-      }
+        name: "",
+        planet: null,
+        checked: []
+      },
+      planet: [
+        { text: "Select One", value: null },
+        "Earth",
+        "Jupiter",
+        "Mars",
+        "Mercury",
+        "Neptune",
+        "Saturn",
+        "Venus",
+        "Uranus"
+      ],
+      show: true
     };
   },
   methods: {
-    updateProfile() {
-      alert("Your data: " + JSON.stringify(this.user));
+    onSubmit(evt) {
+      evt.preventDefault();
+      alert(JSON.stringify(this.form));
+    },
+    onReset(evt) {
+      evt.preventDefault();
+      // Reset our form values
+      this.form.email = "";
+      this.form.name = "";
+      this.form.planet = null;
+      this.form.checked = [];
+      // Trick to reset/clear native browser form validation state
+      this.show = false;
+      this.$nextTick(() => {
+        this.show = true;
+      });
     }
   }
 };

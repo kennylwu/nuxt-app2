@@ -11,10 +11,10 @@
             <nuxt-link to="about">About</nuxt-link>
           </b-nav-item>
           <b-nav-item>
-            <nuxt-link to="services">Services</nuxt-link>
+            <nuxt-link to="contact">Contact</nuxt-link>
           </b-nav-item>
           <b-nav-item>
-            <nuxt-link to="contact">Contact</nuxt-link>
+            <nuxt-link to="services">Services</nuxt-link>
           </b-nav-item>
         </b-navbar-nav>
 
