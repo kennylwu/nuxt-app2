@@ -18,7 +18,12 @@ export default {
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css?family=Montserrat:300,700"
-      }
+      },
+      {
+        rel: "awesome-icon",
+        href: "https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+      },
+      { rel: "stylesheet", href: "/css/themify-icons.css" }
     ]
   },
 

@@ -8,16 +8,29 @@
       >
     </div>
     <p class="subheading">Infomation about me</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, deleniti? Iusto, magnam doloremque quaerat commodi vero quo rem recusandae corrupti non doloribus architecto, ipsum amet ut, quae quia eius excepturi!</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, deleniti? Iusto, magnam doloremque quaerat commodi vero quo rem recusandae corrupti non doloribus architecto, ipsum amet ut, quae quia eius excepturi! Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate officiis, rem veritatis soluta eaque fugiat maiores iusto mollitia possimus itaque. Laborum nostrum nihil numquam soluta et eos itaque fugiat est!</p>
     <footer class="flex-container">
-      <b-link class="link" href="https://github.com/kennylwu">Click here to visit my Github</b-link>
+      <div class="icon-container">
+        <span class="ti-github"></span>
+        <span class="icon-name">
+          <b-link class="link" href="https://github.com/kennylwu">Visit my GitHub</b-link>
+        </span>
+      </div>
+      <div class="icon-container">
+        <span class="ti-linkedin"></span>
+        <span class="icon-name">
+          <b-link
+            class="link"
+            href="https://www.linkedin.com/in/kenny-wu-631294174/"
+          >Visit my Linkedin</b-link>
+        </span>
+      </div>
     </footer>
   </section>
 </template>
 
 <script>
 export default {
-  //   transition: "bounce",
   head() {
     return {
       title: "About Kenny",
@@ -31,11 +44,33 @@ export default {
 </script>
 
 <style scoped>
+.icon {
+  display: flex;
+  width: 3%;
+  height: 3%;
+}
 .flex-container {
   display: flex;
   justify-content: center;
 }
 .link {
   color: teal;
+  padding: 1%;
+}
+.icon-container {
+  width: 240px;
+  padding: 0.7em 0;
+  float: left;
+  position: relative;
+  text-align: left;
+}
+.ti-github {
+  font-family: "themify";
+  font-style: normal;
+  font-weight: bold;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
 }
 </style>

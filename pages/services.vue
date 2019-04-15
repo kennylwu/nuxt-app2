@@ -25,7 +25,6 @@ export default {
   }),
   methods: {
     addServices(e) {
-      debugger;
       const text = e.target.value;
       if (text.trim()) {
         this.$store.commit("services/add", { text });
