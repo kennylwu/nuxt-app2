@@ -20,6 +20,7 @@
 import { mapMutations, mapGetters } from "vuex";
 
 export default {
+  layout: "dark",
   computed: mapGetters({
     services: "services/services"
   }),
